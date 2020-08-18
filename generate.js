@@ -13,7 +13,7 @@ const buildServices = (config) => {
 
         returnObject[key] = merge(returnObject[key], value['use-always']);
 
-        if (STATE[key] === 'use-image') {
+        if (!STATE[key] || STATE[key] === 'use-image') {
             returnObject[key] = merge(returnObject[key], value['use-image']);
         }
 
