@@ -1,0 +1,28 @@
+{
+  "name": "@hjdarnel/docker-maestro",
+  "version": "0.0.0-beta.1",
+  "type": "module",
+  "description": "Orchestrate your docker-compose files from a source of truth",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --experimental-modules index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Henry Darnell",
+  "license": "ISC",
+  "dependencies": {
+    "js-yaml": "^3.14.0",
+    "lodash.merge": "^4.6.2",
+    "yargs": "^15.4.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "prettier": "^2.0.5"
+  },
+  "bin": {
+    "docker-maestro": "index.js"
+  }
+}

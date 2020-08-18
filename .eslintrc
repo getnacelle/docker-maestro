@@ -1,0 +1,11 @@
+{
+    "extends": ["airbnb-base", "prettier"],
+    "rules": {
+        "no-console": "off",
+        "array-callback-return": "off",
+        "consistent-return": "off",
+        "import/extensions": "off",
+        "spaced-comment": "off",
+        "lines-around-directive": "off"
+    }
+}
