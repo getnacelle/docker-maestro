@@ -2,9 +2,9 @@
   "name": "@hjdarnel/docker-maestro",
   "version": "0.0.0-beta.1",
   "description": "Orchestrate your docker-compose files from a source of truth",
-  "main": "index.js",
+  "main": "cli.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node cli.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Henry Darnell",
@@ -22,6 +22,6 @@
     "prettier": "^2.0.5"
   },
   "bin": {
-    "docker-maestro": "index.js"
+    "docker-maestro": "cli.js"
   }
 }
