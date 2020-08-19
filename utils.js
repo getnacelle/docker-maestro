@@ -13,6 +13,19 @@ const getState = () => {
     return {};
 };
 
+const showState = () => {
+    if (fs.existsSync(STATE_PATH)) {
+        const state = yaml.safeLoad(fs.readFileSync(STATE_PATH)) || {};
+        Object.entries(state).map(([key, value]) => {
+            console.log(`${key}\t${value}`);
+        });
+    }
+};
+
+const resetState = () => {
+    fs.closeSync(fs.openSync(STATE_PATH, 'w'));
+};
+
 const writeState = (state) => {
     fs.writeFileSync(STATE_PATH, yaml.safeDump(state));
 };
@@ -25,4 +38,4 @@ const getServices = () => {
     process.exit(1);
 };
 
-module.exports = { getState, getServices, writeState };
+module.exports = { getState, getServices, writeState, showState, resetState };
