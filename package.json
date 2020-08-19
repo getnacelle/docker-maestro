@@ -1,6 +1,6 @@
 {
   "name": "@hjdarnel/docker-maestro",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Orchestrate your docker-compose files from a single source of truth",
   "main": "cli.js",
   "scripts": {
