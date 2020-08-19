@@ -47,7 +47,7 @@ const generate = () => {
         console.log(e);
     }
 
-    console.log('Docker-Compose file generated');
+    console.log('docker-compose.yml generated');
 };
 
 module.exports = generate;

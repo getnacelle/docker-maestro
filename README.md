@@ -1,8 +1,12 @@
 # Docker Maestro
 A way to orchestrate your team's `docker-compose.yml` files based on one source of truth , your `docker-maestro.yml`
 
-## Examples
-Execute `docker-maestro generate` in the same directory as your `docker-maestro.yml` to generate a matching `docker-compose.yml` file for that configuration.
+## Usage
+```
+docker-maestro generate             Regenerate Compose file from Maestro
+docker-maestro use-image [service]  Switch a service to image
+docker-maestro use-local [service]  Switch a service to local
+```
 
 Example Maestro file:
 ```yaml
@@ -24,10 +28,12 @@ web:
 redis:
   use-always:
     image: redis
+networks:
+  default:
+    external:
+      name: my-pre-existing-network
 ```
 
-- `docker-maestro use-image [service]` Switch a service to image
-
-- `docker-maestro use-local [service]` Switch a service to local
+`volumes:` and `networks:` are reserved top level configuration names. They will get generated out to the respective field, not under `services:` in your docker-compose.yml
 
 Execute `docker-maestro --help` for more.
