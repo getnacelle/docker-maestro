@@ -1,9 +1,8 @@
-#!/bin/sh
-':' //# comment; exec /usr/bin/env node --experimental-modules "$0" "$@"
+#!/usr/bin/env node
 
-import yargs from 'yargs';
-import generate from './generate.js';
-import { useImage, useLocal } from './state.js';
+const yargs = require('yargs');
+const generate = require('./generate.js');
+const { useImage, useLocal } = require('./state.js');
 
 const { argv } = yargs
     .usage('Usage: $0 <command> [options]')
@@ -19,10 +18,9 @@ switch (argv._[0]) {
     case 'use-image':
         useImage([argv.service]);
         break;
-    case 'use-lmage':
+    case 'use-local':
         useLocal([argv.service]);
         break;
     default:
-        console.log(1);
         break;
 }

@@ -1,15 +1,15 @@
-import yaml from 'js-yaml';
-import fs from 'fs';
-import merge from 'lodash.merge';
-import { getState, getServices } from './utils.js';
-
-const STATE = getState();
+const yaml = require('js-yaml');
+const fs = require('fs');
+const merge = require('lodash.merge');
+const { getState, getServices } = require('./utils.js');
 
 const buildServices = (config) => {
+    const STATE = getState();
     const returnObject = {};
 
     Object.entries(config).map(([key, value]) => {
         if (key === 'volumes') return;
+        if (key === 'networks') return;
 
         returnObject[key] = merge(returnObject[key], value['use-always']);
 
@@ -25,14 +25,6 @@ const buildServices = (config) => {
     return returnObject;
 };
 
-const dumpYaml = (yamlString) => {
-    try {
-        fs.writeFileSync('docker-compose.yml', yamlString);
-    } catch (e) {
-        console.log(e);
-    }
-};
-
 const generate = () => {
     const services = getServices();
     const built = buildServices(services);
@@ -45,7 +37,17 @@ const generate = () => {
         composed.volumes = services.volumes;
     }
 
-    dumpYaml(yaml.safeDump(composed));
+    if (services.networks) {
+        composed.networks = services.networks;
+    }
+
+    try {
+        fs.writeFileSync('docker-compose.yml', yaml.safeDump(composed));
+    } catch (e) {
+        console.log(e);
+    }
+
+    console.log('Docker-Compose file generated');
 };
 
-export default generate;
+module.exports = generate;

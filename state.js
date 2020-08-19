@@ -1,19 +1,24 @@
-import { getState, writeState } from './utils.js';
+const { getState, writeState } = require('./utils.js');
+const generate = require('./generate.js');
 
-export function useLocal(keys) {
+const useLocal = (keys) => {
     const state = getState();
     keys.map((key) => {
         state[key] = 'use-local';
     });
     writeState(state);
+    generate();
     return state;
-}
+};
 
-export function useImage(keys) {
+const useImage = (keys) => {
     const state = getState();
     keys.map((key) => {
         state[key] = 'use-image';
     });
     writeState(state);
+    generate();
     return state;
-}
+};
+
+module.exports = { useLocal, useImage };

@@ -1,11 +1,10 @@
 {
   "name": "@hjdarnel/docker-maestro",
   "version": "0.0.0-beta.1",
-  "type": "module",
   "description": "Orchestrate your docker-compose files from a source of truth",
   "main": "index.js",
   "scripts": {
-    "start": "node --experimental-modules index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Henry Darnell",
